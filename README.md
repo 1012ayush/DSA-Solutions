@@ -16,6 +16,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0136-single-number](https://github.com/1012ayush/DSA-Solutions/tree/master/0136-single-number) |
 | [0169-majority-element](https://github.com/1012ayush/DSA-Solutions/tree/master/0169-majority-element) |
 | [0189-rotate-array](https://github.com/1012ayush/DSA-Solutions/tree/master/0189-rotate-array) |
+| [0229-majority-element-ii](https://github.com/1012ayush/DSA-Solutions/tree/master/0229-majority-element-ii) |
 | [0283-move-zeroes](https://github.com/1012ayush/DSA-Solutions/tree/master/0283-move-zeroes) |
 | [0485-max-consecutive-ones](https://github.com/1012ayush/DSA-Solutions/tree/master/0485-max-consecutive-ones) |
 | [1752-check-if-array-is-sorted-and-rotated](https://github.com/1012ayush/DSA-Solutions/tree/master/1752-check-if-array-is-sorted-and-rotated) |
@@ -35,11 +36,13 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | ------- |
 | [0001-two-sum](https://github.com/1012ayush/DSA-Solutions/tree/master/0001-two-sum) |
 | [0169-majority-element](https://github.com/1012ayush/DSA-Solutions/tree/master/0169-majority-element) |
+| [0229-majority-element-ii](https://github.com/1012ayush/DSA-Solutions/tree/master/0229-majority-element-ii) |
 ## Sorting
 |  |
 | ------- |
 | [0075-sort-colors](https://github.com/1012ayush/DSA-Solutions/tree/master/0075-sort-colors) |
 | [0169-majority-element](https://github.com/1012ayush/DSA-Solutions/tree/master/0169-majority-element) |
+| [0229-majority-element-ii](https://github.com/1012ayush/DSA-Solutions/tree/master/0229-majority-element-ii) |
 ## Divide and Conquer
 |  |
 | ------- |
@@ -48,4 +51,5 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0169-majority-element](https://github.com/1012ayush/DSA-Solutions/tree/master/0169-majority-element) |
+| [0229-majority-element-ii](https://github.com/1012ayush/DSA-Solutions/tree/master/0229-majority-element-ii) |
 <!---LeetCode Topics End-->

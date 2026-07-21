@@ -1,60 +1,86 @@
 class Solution {
     public int reversePairs(int[] nums) {
-        return mergeSort(nums, 0, nums.length - 1);
+        return (int) mergeSort(nums, 0, nums.length - 1);
     }
 
-    private int mergeSort(int[] nums, int left, int right) {
-        if (left >= right) return 0;
-        int mid = left + (right - left) / 2;
-        
-        // Count pairs in left half + right half + cross-pairs between halves
-        int count = mergeSort(nums, left, mid) + mergeSort(nums, mid + 1, right);
-        count += countPairs(nums, left, mid, right);
-        
-        // Merge the sorted halves back together
-        merge(nums, left, mid, right);
-        
+    // Function to divide the array and count reverse pairs
+    public static long mergeSort(int[] arr, int left, int right) {
+        long count = 0;
+        if (left < right) {
+            int mid = left + (right - left) / 2;
+
+            // Sort left half & count reverse pairs within it
+            count += mergeSort(arr, left, mid);
+
+            // Sort right half & count reverse pairs within it
+            count += mergeSort(arr, mid + 1, right);
+
+            // Count cross-pairs between the two sorted halves
+            count += countPairs(arr, left, mid, right);
+
+            // Merge both halves back together in sorted order
+            merge(arr, left, mid, right);
+        }
         return count;
     }
 
-    private int countPairs(int[] nums, int left, int mid, int right) {
-        int count = 0;
+    // Function to count cross-pairs using a two-pointer approach
+    public static long countPairs(int[] arr, int left, int mid, int right) {
+        long count = 0;
         int r = mid + 1;
         
-        // For each element in the left half, find how many elements in the right half satisfy nums[i] > 2 * nums[r]
         for (int i = left; i <= mid; i++) {
-            while (r <= right && (long) nums[i] > 2 * (long) nums[r]) {
+            // While right pointer is within bounds and satisfies the condition
+            // Cast to long to prevent integer overflow during multiplication by 2
+            while (r <= right && (long) arr[i] > 2 * (long) arr[r]) {
                 r++;
             }
+            // Add all valid elements found for the current arr[i]
             count += (r - (mid + 1));
         }
         return count;
     }
 
-    private void merge(int[] nums, int left, int mid, int right) {
-        int[] temp = new int[right - left + 1];
-        int i = left, j = mid + 1, k = 0;
+    // Standard function to merge two sorted arrays
+    public static void merge(int[] arr, int left, int mid, int right) {
+        int n1 = mid - left + 1;
+        int n2 = right - mid;
 
-        // Standard merge step to keep the array sorted
-        while (i <= mid && j <= right) {
-            if (nums[i] <= nums[j]) {
-                temp[k++] = nums[i++];
+        int[] L = new int[n1];
+        int[] R = new int[n2];
+
+        for (int i = 0; i < n1; i++)
+            L[i] = arr[left + i];
+
+        for (int j = 0; j < n2; j++)
+            R[j] = arr[mid + 1 + j];
+
+        int i = 0;
+        int j = 0;
+        int k = left;
+
+        // Merge the temp arrays in ascending order
+        while (i < n1 && j < n2) {
+            if (L[i] <= R[j]) {
+                arr[k] = L[i];
+                i++;
             } else {
-                temp[k++] = nums[j++];
+                arr[k] = R[j];
+                j++;
             }
-        }
-        
-        while (i <= mid) {
-            temp[k++] = nums[i++];
-        }
-        
-        while (j <= right) {
-            temp[k++] = nums[j++];
+            k++;
         }
 
-        // Copy sorted elements back into the original array
-        for (int p = 0; p < temp.length; p++) {
-            nums[left + p] = temp[p];
+        while (i < n1) {
+            arr[k] = L[i];
+            i++;
+            k++;
+        }
+
+        while (j < n2) {
+            arr[k] = R[j];
+            j++;
+            k++;
         }
     }
 }
